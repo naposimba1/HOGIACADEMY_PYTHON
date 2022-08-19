@@ -1,6 +1,11 @@
+from codecs import oem_decode
+
+
 def afficher(*params):
 
-       for i in params:
-              print (i,  end=" ")
-           
-afficher(1,  6.9 ,  "j" , 0  , "hjk")
+    for i in params:
+        print(i,  end=" ")
+
+
+def kuramutsa(izina):
+    print("Bonjour", izina)
