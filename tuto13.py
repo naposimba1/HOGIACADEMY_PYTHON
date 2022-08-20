@@ -16,7 +16,7 @@ finally:
 
 try:
     a = int(input("Andika igiharuro kiri >0: "))
-    assert a < 0
+    assert a < 5
 except AssertionError:
     print("Le nombre saisi ne remplit pas les conditions")
 else:
