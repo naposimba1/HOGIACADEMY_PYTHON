@@ -9,7 +9,7 @@ def lister(db):
             el['prenom'], "\t",
             el['anglais'], "\t",
             el['maths']
-            # el['datenaissance']
+
         )
 
 
@@ -23,8 +23,13 @@ def ajouter(db):
     nom = input("Veuillez saisir votre nom: ")
     prenom = input("Veuillez saisir votre prenom: ")
     anglais = float(input("Veuillez saisir les points obtenus en anglais: "))
-    #datenaissance = date(input("Saisissez votre date de naissance: "))
     maths = float(input("Veuillez saisir les points obtenus en maths: "))
+
+    annee = int(input("Saississez l'année de naissance"))
+    mois = int(input("Saississez le mois de naissance"))
+    jour = int(input("Saisissez le jour de naissance"))
+
+    print("Votre  date de naissance est: ", +annee+mois+jour)
 
     eleve = {
         "no": no,
@@ -32,6 +37,9 @@ def ajouter(db):
         "prenom": prenom,
         "anglais": anglais,
         "maths": maths,
+        "annee": annee,
+        "mois": mois,
+        "jour": jour
         # "daten": datenaissance
     }
     db.append(eleve)
@@ -68,7 +76,8 @@ def modifier(db):
 
 
 def supprimer(db):
-    no = input("Veuillez saisir votre matricule: ")
+    no = input(
+        "Veuillez saisir votre matricule de l'élève que vous voulez supprimer: ")
     eleve = None
     index = -1
     for i, del_elv in enumerate(db):
