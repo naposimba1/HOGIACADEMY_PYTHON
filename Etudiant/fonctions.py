@@ -1,3 +1,6 @@
+from datetime import date
+
+
 def lister(db):
     for el in db:
         print(
@@ -6,6 +9,7 @@ def lister(db):
             el['prenom'], "\t",
             el['anglais'], "\t",
             el['maths']
+            # el['datenaissance']
         )
 
 
@@ -19,6 +23,7 @@ def ajouter(db):
     nom = input("Veuillez saisir votre nom: ")
     prenom = input("Veuillez saisir votre prenom: ")
     anglais = float(input("Veuillez saisir les points obtenus en anglais: "))
+    #datenaissance = date(input("Saisissez votre date de naissance: "))
     maths = float(input("Veuillez saisir les points obtenus en maths: "))
 
     eleve = {
@@ -26,7 +31,8 @@ def ajouter(db):
         "nom": nom,
         "prenom": prenom,
         "anglais": anglais,
-        "maths": maths
+        "maths": maths,
+        # "daten": datenaissance
     }
     db.append(eleve)
 
@@ -62,4 +68,17 @@ def modifier(db):
 
 
 def supprimer(db):
-    print("Vous avez choisi de supprimer")
+    no = input("Veuillez saisir votre matricule: ")
+    eleve = None
+    index = -1
+    for i, del_elv in enumerate(db):
+        if del_elv["no"] == no:
+            eleve = del_elv
+            index = i
+            break
+    if index != -1:
+        db.remove(eleve)
+    else:
+        print("L'eleve n'existe pas")
+
+    #print("Vous avez choisi de supprimer")
