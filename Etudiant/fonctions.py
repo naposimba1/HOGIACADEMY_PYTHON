@@ -25,11 +25,11 @@ def ajouter(db):
     anglais = float(input("Veuillez saisir les points obtenus en anglais: "))
     maths = float(input("Veuillez saisir les points obtenus en maths: "))
 
-    annee = int(input("Saississez l'année de naissance"))
-    mois = int(input("Saississez le mois de naissance"))
-    jour = int(input("Saisissez le jour de naissance"))
+    # annee = int(input("Saississez l'année de naissance"))
+    # mois = int(input("Saississez le mois de naissance"))
+    # jour = int(input("Saisissez le jour de naissance"))
 
-    print("Votre  date de naissance est: ", +annee+mois+jour)
+    # print("Votre  date de naissance est: ", +annee+mois+jour)
 
     eleve = {
         "no": no,
@@ -37,9 +37,9 @@ def ajouter(db):
         "prenom": prenom,
         "anglais": anglais,
         "maths": maths,
-        "annee": annee,
-        "mois": mois,
-        "jour": jour
+        # "annee": annee,
+        # "mois": mois,
+        # "jour": jour
         # "daten": datenaissance
     }
     db.append(eleve)
@@ -54,6 +54,7 @@ def modifier(db):
         if ele["no"] == no:
             eleve = ele
             index = i
+
             break
     if index != -1:
         nom = input("Nouveau nom")
