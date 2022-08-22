@@ -1,4 +1,4 @@
-# abc = dict() c'est la même chose que abc{}
+# abc = dict() c'est la même chose que abc={}
 abc = {'un': 'kimwe', 'trois': 'gatatu', 23: 'Vingt-Trois'}
 
 for x in abc.items():

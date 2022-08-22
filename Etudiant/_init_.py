@@ -4,7 +4,7 @@ from fonctions import *
 db = []
 
 while True:
-    choix = input(""""
+    choix = input("""
                   Vous voulez: 
                   (1) Ajouter \n
                   (2) Modifier \n

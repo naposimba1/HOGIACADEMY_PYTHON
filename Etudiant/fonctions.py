@@ -9,7 +9,6 @@ def lister(db):
             el['prenom'], "\t",
             el['anglais'], "\t",
             el['maths']
-
         )
 
 
