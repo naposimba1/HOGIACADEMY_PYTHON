@@ -1,0 +1,3 @@
+eleve(Id#,nom, prenom,section,niveau)
+note(idel#, codematiere#, moyenne)
+matiere(code, nom_matiere)
