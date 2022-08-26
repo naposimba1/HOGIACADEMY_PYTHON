@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import *
-admin.site.register(Salle)
+from .models import Salle, SalleAdmin
+admin.site.register(Salle, SalleAdmin)
 
 # from .models import *
 
