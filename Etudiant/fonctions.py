@@ -15,8 +15,8 @@ def lister(db):
             el[1], "\t",
             el[2], "\t",
             el[3], "\t",
-            el[3], "\t",
-            el[4]
+            el[4], "\t",
+            el[5]
         )
     con.commit()
     con.close()
@@ -28,12 +28,12 @@ def rechercher(db):
 
 def ajouter(db):
 
-    con = sqlite3.connect(
-        "E:\APPLICATION\HOGI ACADEMY\PYTHON\napis\napoleon.sqlite3")
+    con = sqlite3.connect("napoleon.sqlite3")
     cur = con.cursor()
     cur.execute("Select * from eleve")
     rows = cur.fetchall()
 
+    matricule = input("Veuillez saisir la matricule de l'étudiant")
     nom = input("Veuillez saisir votre nom: ")
     prenom = input("Veuillez saisir votre prenom: ")
     anglais = float(input("Veuillez saisir les points obtenus en anglais: "))
@@ -49,7 +49,7 @@ def ajouter(db):
     cur.execute(f"""
             INSERT INTO eleve (nom, prenom, datenaissance, maths, anglais) 
             VALUES 
-            ("{nom} ", "{prenom}", {datenaissance}, {maths},{anglais} )
+            ("{matricule} ","{nom} ", "{prenom}", {datenaissance}, {maths},{anglais} )
             """)
     con.commit()
     con.close()
@@ -57,11 +57,11 @@ def ajouter(db):
 
 def modifier(db):
     #print("Vous avez choisi de modifier")
-    no = input("Veuillez saisir votre matricule: ")
+    matricule = input("Veuillez saisir la matricule de l'étudiant: ")
     eleve = None
     index = -1
     for i, ele in enumerate(db):
-        if ele["no"] == no:
+        if ele["matricule"] == matricule:
             eleve = ele
             index = i
 
@@ -73,17 +73,17 @@ def modifier(db):
             input("Veuillez saisir les nouveaux points obtenus en anglais: "))
         maths = float(
             input("Veuillez saisir les nouveaux points obtenus en maths: "))
-        eleve = {
-            "no": no,
-            "nom": nom if nom != " " else eleve["nom"],
-            "prenom": prenom if prenom != "" else eleve[prenom],
-            "anglais": anglais if anglais != "0.0" else eleve[anglais],
-            "maths": maths if maths != "0.0" else eleve[maths],
-            "annee": annee if annee != " " else eleve[annee],
-            "mois": mois if mois != " " else eleve[mois],
-            "jour": jour if jour != " " else eleve[jour]
-            # "datenaissance" =  datenaissance if annee !="0 " or mois!="0 " or jour!=" 0" else eleve[datenaissance]
-        }
+        # eleve = {
+        #     "no": no,
+        #     "nom": nom if nom != " " else eleve["nom"],
+        #     "prenom": prenom if prenom != "" else eleve[prenom],
+        #     "anglais": anglais if anglais != "0.0" else eleve[anglais],
+        #     "maths": maths if maths != "0.0" else eleve[maths],
+        #     "annee": annee if annee != " " else eleve[annee],
+        #     "mois": mois if mois != " " else eleve[mois],
+        #     "jour": jour if jour != " " else eleve[jour]
+        #     # "datenaissance" =  datenaissance if annee !="0 " or mois!="0 " or jour!=" 0" else eleve[datenaissance]
+        # }
 
         db[index] = eleve
     else:
