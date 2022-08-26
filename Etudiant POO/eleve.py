@@ -2,7 +2,7 @@ from ast import MatchSequence
 
 
 class Eleve:
-    def __init__(self, no, fullname, sexe, maths, anglais):
+    def __init__(self, no: int, fullname: str, sexe: str, maths: float, anglais: float):
         self.no = no
         self.fullname = fullname
         self.sexe = sexe
