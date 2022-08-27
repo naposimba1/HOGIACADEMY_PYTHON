@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de la salle de reception</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+    p{
+        color: blue;
+        
+    }
+    body{
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    </style>
+    
+</head>
+
+<body>
+<h1>Bonjour</h1> 
+<center> 
+{% for x in reservations %} 
+    <p>Client: {{x.client.nom_client}} {{x.client.prenom_client }} </p> 
+    <p>Fête:{{x.type_fete.nom_fete}} </p>
+    <p>Décor: {{x.type_decor.nomdecor}} </p>
+    <p>Montant à payer: {{x.a_payer}} </p>
+    <p>Avance : {{x.avance}} </p>
+    <p>Date de réservation : {{x.date_avance}} </p>
+{% endfor %}
+<p>Total de la somme encaissée : {{total}} </p>
+</center>
+</body>
+
+</html>
