@@ -21,7 +21,7 @@ class Salle(models.Model):
         return f"{self.nomClient} {self.prenomClient} {self.nomfete} {self.datedelafete} {self.nombrejr} {self.autres}"
 
 
-class SalleAdmin(admin.ModelAdmin):
-    list_display = ('nomClient', 'prenomClient', 'phoneClient',
-                    'nomfete', 'montantpaye', 'datedelafete', 'nombrejr')
-    list_filter = ('nomClient')
+# class SalleAdmin(admin.ModelAdmin):
+#     list_display = ('nomClient', 'prenomClient', 'phoneClient',
+#                     'nomfete', 'montantpaye', 'datedelafete', 'nombrejr')
+#     list_filter = ('nomClient')
