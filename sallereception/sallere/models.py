@@ -18,10 +18,10 @@ class Salle(models.Model):
     autres = models.TextField()
 
     def __str__(self):
-        return f"{self.nomClient} {self.prenomClient} {self.sexe} {self.nomfete} {self.datedelafete} {self.nombrejr} {self.autres}"
+        return f"{self.nomClient} {self.prenomClient} {self.nomfete} {self.datedelafete} {self.nombrejr} {self.autres}"
 
 
-# class SalleAdmin(admin.ModelAdmin):
-#     list_display = ('nomClient', 'prenomClient', 'phoneClient',
-#                     'nomfete', 'montantpaye', 'datedelafete', 'nombrejr')
-#     list_filter = ('nomClient')
+class SalleAdmin(admin.ModelAdmin):
+    list_display = ('nomClient', 'prenomClient', 'phoneClient',
+                    'nomfete', 'montantpaye', 'datedelafete', 'nombrejr')
+    list_filter = ('nomClient')

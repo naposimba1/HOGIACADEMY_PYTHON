@@ -1,32 +1,50 @@
 from eleve import Eleve
-from classes import Classe
+from classe import Classe
 
 
-def creer():
-    no = input("Saisissez le no: ")
-    fullname = input("Saisissez le nom: ")
-    sexe = input("Saisissez le sexe: ")
-    maths = input("Saisissez note maths: ")
-    anglais = input("Saisissez note anglais: ")
+def creer(classe):
+    no = input("saisissez le no:")
+    fullname = input("saisissez le fullname:")
+    maths = input("saisissez les points maths:")
+    engl = input("saisissez les points engl:")
+    sexe = input("saisissez le sexe:")
 
-    eleve = Eleve(no, fullname, sexe, maths, anglais)
-    classes.ajouter(eleve)
+    eleve = Eleve(no, fullname, maths, engl, sexe)
+    try:
+        classe.ajouter(eleve)
+    except Exception as e:
+        print("HABAYE IKIBAZO:", e)
 
 
-# def afficher(classe):
+def lister(classe):
+    print(classe)
 
 
 def modifier(classe):
-    no = input("Saisissez le no: ")
-    fullname = input("Saisissez le nom: ")
-    sexe = input("Saisissez le sexe: ")
-    maths = input("Saisissez note maths: ")
-    anglais = input("Saisissez note anglais: ")
+    no = input("saisissez le no:")
+    eleve = classe.rechercher(no)
+    if (eleve):
+        fullname = input("saisissez le fullname:")
+        maths = input("saisissez les points maths:")
+        engl = input("saisissez les points engl:")
+        sexe = input("saisissez le sexe:")
+        eleve.fullname = fullname
+        eleve.maths = maths
+        eleve.engl = engl
+        eleve.sexe = sexe
+    else:
+        print("eleve introuvable")
 
 
 def supprimer(classe):
-    no = input("Saisissez le no: ")
+    no = input("saisissez le no:")
+    classe.supprimer(no)
 
 
 def chercher(classe):
-    no = input("Saisissez le no: ")
+    no = input("saisissez le no:")
+    eleve = classe.rechercher(no)
+    if (eleve):
+        print(eleve)
+    else:
+        print("eleve introuvable")
