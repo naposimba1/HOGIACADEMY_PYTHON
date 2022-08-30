@@ -16,6 +16,8 @@
     body{
         margin-left: auto;
         margin-right: auto;
+        padding:auto;
+
 
     }
     </style>
@@ -23,17 +25,25 @@
 </head>
 
 <body>
-<h1>Bonjour</h1> 
+    
+    <center>   
+<h1>Liste des réservations de la salle</h1> 
+    </center>
 <center> 
+    
 {% for x in reservations %} 
     <p>Client: {{x.client.nom_client}} {{x.client.prenom_client }} </p> 
     <p>Fête:{{x.type_fete.nom_fete}} </p>
-    <p>Décor: {{x.type_decor.nomdecor}} </p>
+    <p>Décor: {{x.type_decor.nom_decor}} </p>
+    {% comment %} <p>Montant Décor: {{x.type_decor.montant_decor}} </p> {% endcomment %}
     <p>Montant à payer: {{x.a_payer}} </p>
-    <p>Avance : {{x.avance}} </p>
-    <p>Date de réservation : {{x.date_avance}} </p>
+    <p>Avance : {{x.avance}} </p> 
+    <p>Décor: {{x.type_decor.nom_decor}} </p>
+    <p>------------------------------------------------------------------- </p>
+
 {% endfor %}
-<p>Total de la somme encaissée : {{total}} </p>
+
+<h1>Total de la somme encaissée : {{total}} </h1>
 </center>
 </body>
 

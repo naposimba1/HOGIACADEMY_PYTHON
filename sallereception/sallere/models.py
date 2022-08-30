@@ -34,25 +34,28 @@ class Type_Fete(models.Model):
 
 class Type_Decor(models.Model):
     id = models.BigAutoField(primary_key=True)
-    nomdecor = models.CharField(max_length=32)
+    nom_decor = models.CharField(max_length=32)
     montant_decor = models.IntegerField(default=0)
     code_decor = models.CharField(max_length=32)
 
     def __str__(self):
-        return f"{self.nomdecor} {self.montant_decor} {self.code_decor}"
+        return f"{self.nom_decor} {self.montant_decor} {self.code_decor}"
 
 
 class Reservation(models.Model):
     id = models.BigAutoField(primary_key=True)
+    # on_delete cascade si tu supprime un client, nivyiw vyose birajana
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    #  on_delete protect si tu supprime la fete, hari ayandi ma données ajany na fete ahandi ntibikunda
+    type_fete = models.ForeignKey(Type_Fete, on_delete=models.PROTECT)
     type_decor = models.ForeignKey(
         Type_Decor, on_delete=models.PROTECT, null=True, blank=True)
-    type_fete = models.ForeignKey(Type_Fete, on_delete=models.PROTECT)
-    a_payer = models.IntegerField(default=0, null=True, blank=True)
+    date_de_reservation = models.DateField
     avance = models.IntegerField(default=0)
+    a_payer = models.IntegerField(default=0, null=True, blank=True)
     date_avance = models.DateTimeField(auto_now=True)
     date_payer_total = models.DateField(null=True, blank=True)
-    date_reservation = models.DateField
+
    # surcharge des methodes   :: guteranya le montant de la fête et le montant du décor
 
     def save(self, *args, **kwargs):
@@ -62,5 +65,12 @@ class Reservation(models.Model):
             self.a_payer = self.type_fete.montant_fete
         super(Reservation, self).save(*args, **kwargs)
 
+    def verificationdate(self):
+        if (self.date_de_reservation):
+            print("La date est déjà réservée")
+
     def __str__(self):
-        return f"{self.client.nom_client} {self.client.prenom_client} {self.date_avance} {self.date_reservation}"
+        if (self.type_decor):
+            return f"{self.client.nom_client} {self.client.prenom_client} {self.date_de_reservation} {self.date_avance} {self.type_decor.nom_decor} {self.type_fete.nom_fete} "
+        else:
+            return f"{self.client.nom_client} {self.client.prenom_client} {self.date_de_reservation} {self.date_avance}  {self.type_fete.nom_fete} "
